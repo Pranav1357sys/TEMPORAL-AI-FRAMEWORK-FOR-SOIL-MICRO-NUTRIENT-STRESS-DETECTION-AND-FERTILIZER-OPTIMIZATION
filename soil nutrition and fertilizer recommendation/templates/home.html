@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-5">
+    <div class="text-center mb-5">
+        <h1>Welcome, {{ session.username }}!</h1>
+        <p class="lead">Select an option below to get started with your predictions.</p>
+    </div>
+
+    <div class="row g-4">
+        <!-- Nutrition Prediction -->
+        <div class="col-md-4">
+            <div class="card text-center shadow h-100">
+                <div class="card-body">
+                    <h5 class="card-title">Nutrition Prediction</h5>
+                    <p class="card-text">Predict soil fertility based on nutrients and environmental factors.</p>
+                    <a href="{{ url_for('nutrition') }}" class="btn btn-success">Go</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Fertilizer Prediction -->
+        <div class="col-md-4">
+            <div class="card text-center shadow h-100">
+                <div class="card-body">
+                    <h5 class="card-title">Fertilizer Prediction</h5>
+                    <p class="card-text">Predict the best fertilizer for your crops based on soil and crop conditions.</p>
+                    <a href="{{ url_for('fertilizer') }}" class="btn btn-primary">Go</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Prediction History -->
+        <div class="col-md-4">
+            <div class="card text-center shadow h-100">
+                <div class="card-body">
+                    <h5 class="card-title">Prediction History</h5>
+                    <p class="card-text">View all your past predictions with details and timestamps.</p>
+                    <a href="{{ url_for('history') }}" class="btn btn-warning text-white">Go</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

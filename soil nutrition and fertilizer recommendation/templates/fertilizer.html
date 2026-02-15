@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="card p-4">
+    <h2 class="mb-4">Fertilizer Prediction</h2>
+    <form method="POST">
+        <div class="row">
+            <div class="col-md-4 mb-3">
+                <label>Temparature</label>
+                <input type="number" step="any" name="Temparature" class="form-control" required>
+            </div>
+            <div class="col-md-4 mb-3">
+                <label>Humidity</label>
+                <input type="number" step="any" name="Humidity" class="form-control" required>
+            </div>
+            <div class="col-md-4 mb-3">
+                <label>Moisture</label>
+                <input type="number" step="any" name="Moisture" class="form-control" required>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <label>Soil Type</label>
+                <select class="form-select" name="Soil_Type" required>
+                    {% for s in soil_options %}
+                    <option value="{{ s }}">{{ s }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="col-md-6 mb-3">
+                <label>Crop Type</label>
+                <select class="form-select" name="Crop_Type" required>
+                    {% for c in crop_options %}
+                    <option value="{{ c }}">{{ c }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4 mb-3">
+                <label>Nitrogen</label>
+                <input type="number" step="any" name="Nitrogen" class="form-control" required>
+            </div>
+            <div class="col-md-4 mb-3">
+                <label>Potassium</label>
+                <input type="number" step="any" name="Potassium" class="form-control" required>
+            </div>
+            <div class="col-md-4 mb-3">
+                <label>Phosphorous</label>
+                <input type="number" step="any" name="Phosphorous" class="form-control" required>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary mt-3">Predict</button>
+    </form>
+
+    {% if result %}
+    <div class="alert alert-info mt-4">
+        <h4>Recommended Fertilizer: {{ result }}</h4>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

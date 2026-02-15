@@ -1,0 +1,125 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="card p-4">
+    <h2 class="mb-4">Nutrition Prediction</h2>
+    <form method="POST">
+        <div class="row">
+            <div class="col-md-4 mb-3">
+                <label>Name</label>
+                <select class="form-select" name="Name" required>
+                    {% for n in name_options %}
+                    <option value="{{ n }}">{{ n }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="col-md-4 mb-3">
+                <label>Photoperiod</label>
+                <select class="form-select" name="Photoperiod" required>
+                    {% for p in photoperiod_options %}
+                    <option value="{{ p }}">{{ p }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="col-md-4 mb-3">
+                <label>Category pH</label>
+                <select class="form-select" name="Category_pH" required>
+                    {% for c in category_ph_options %}
+                    <option value="{{ c }}">{{ c }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4 mb-3">
+                <label>Temperature</label>
+                <input type="number" step="any" name="Temperature" class="form-control" required>
+            </div>
+            <div class="col-md-4 mb-3">
+                <label>Rainfall</label>
+                <input type="number" step="any" name="Rainfall" class="form-control" required>
+            </div>
+            <div class="col-md-4 mb-3">
+                <label>pH</label>
+                <input type="number" step="any" name="pH" class="form-control" required>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4 mb-3">
+                <label>Light Hours</label>
+                <input type="number" step="any" name="Light_Hours" class="form-control" required>
+            </div>
+            <div class="col-md-4 mb-3">
+                <label>Light Intensity</label>
+                <input type="number" step="any" name="Light_Intensity" class="form-control" required>
+            </div>
+            <div class="col-md-4 mb-3">
+                <label>Rh</label>
+                <input type="number" step="any" name="Rh" class="form-control" required>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4 mb-3">
+                <label>Nitrogen</label>
+                <input type="number" step="any" name="Nitrogen" class="form-control" required>
+            </div>
+            <div class="col-md-4 mb-3">
+                <label>Phosphorus</label>
+                <input type="number" step="any" name="Phosphorus" class="form-control" required>
+            </div>
+            <div class="col-md-4 mb-3">
+                <label>Potassium</label>
+                <input type="number" step="any" name="Potassium" class="form-control" required>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4 mb-3">
+                <label>Yield</label>
+                <input type="number" step="any" name="Yield" class="form-control" required>
+            </div>
+            <div class="col-md-4 mb-3">
+                <label>Soil Type</label>
+                <select class="form-select" name="Soil_Type" required>
+                    {% for s in soil_type_options %}
+                    <option value="{{ s }}">{{ s }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="col-md-4 mb-3">
+                <label>Season</label>
+                <select class="form-select" name="Season" required>
+                    {% for s in season_options %}
+                    <option value="{{ s }}">{{ s }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4 mb-3">
+                <label>N Ratio</label>
+                <input type="number" step="any" name="N_Ratio" class="form-control" required>
+            </div>
+            <div class="col-md-4 mb-3">
+                <label>P Ratio</label>
+                <input type="number" step="any" name="P_Ratio" class="form-control" required>
+            </div>
+            <div class="col-md-4 mb-3">
+                <label>K Ratio</label>
+                <input type="number" step="any" name="K_Ratio" class="form-control" required>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-success mt-3">Predict</button>
+    </form>
+
+    {% if result %}
+    <div class="alert alert-info mt-4">
+        <h4>Predicted Fertility: {{ result }}</h4>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}
